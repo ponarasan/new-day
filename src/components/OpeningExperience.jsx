@@ -112,7 +112,7 @@ function CinematicOverlay() {
   )
 }
 
-export default function OpeningExperience({ onEntered, onFinished }) {
+export default function OpeningExperience({ onEntered, onFinished, onMusicStart }) {
   const reduceMotion = useReducedMotion()
   const [entering, setEntering] = useState(false)
   const { opening, recipient, sender } = siteConfig
@@ -131,6 +131,7 @@ export default function OpeningExperience({ onEntered, onFinished }) {
 
   const handleOpen = () => {
     if (entering) return
+    onMusicStart?.()
     setEntering(true)
   }
 
